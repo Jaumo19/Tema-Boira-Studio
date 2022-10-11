@@ -14,7 +14,7 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
-	<?php boira_studio_post_thumbnail(); ?>
+	<?php boira_base_post_thumbnail(); ?>
 
 	<div class="entry-content">
 		<?php
@@ -22,7 +22,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'boira-studio' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'boira_base' ),
 				'after'  => '</div>',
 			)
 		);
@@ -36,7 +36,7 @@
 				sprintf(
 					wp_kses(
 						/* translators: %s: Name of current post. Only visible to screen readers */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'boira-studio' ),
+						__( 'Edit <span class="screen-reader-text">%s</span>', 'boira_base' ),
 						array(
 							'span' => array(
 								'class' => array(),

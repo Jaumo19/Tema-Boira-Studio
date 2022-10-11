@@ -10,7 +10,7 @@
  *
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
-function boira_studio_customize_register( $wp_customize ) {
+function boira_base_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -20,26 +20,26 @@ function boira_studio_customize_register( $wp_customize ) {
 			'blogname',
 			array(
 				'selector'        => '.site-title a',
-				'render_callback' => 'boira_studio_customize_partial_blogname',
+				'render_callback' => 'boira_base_customize_partial_blogname',
 			)
 		);
 		$wp_customize->selective_refresh->add_partial(
 			'blogdescription',
 			array(
 				'selector'        => '.site-description',
-				'render_callback' => 'boira_studio_customize_partial_blogdescription',
+				'render_callback' => 'boira_base_customize_partial_blogdescription',
 			)
 		);
 	}
 }
-add_action( 'customize_register', 'boira_studio_customize_register' );
+add_action( 'customize_register', 'boira_base_customize_register' );
 
 /**
  * Render the site title for the selective refresh partial.
  *
  * @return void
  */
-function boira_studio_customize_partial_blogname() {
+function boira_base_customize_partial_blogname() {
 	bloginfo( 'name' );
 }
 
@@ -48,14 +48,14 @@ function boira_studio_customize_partial_blogname() {
  *
  * @return void
  */
-function boira_studio_customize_partial_blogdescription() {
+function boira_base_customize_partial_blogdescription() {
 	bloginfo( 'description' );
 }
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
-function boira_studio_customize_preview_js() {
-	wp_enqueue_script( 'boira-studio-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
+function boira_base_customize_preview_js() {
+	wp_enqueue_script( 'boira_base-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), _S_VERSION, true );
 }
-add_action( 'customize_preview_init', 'boira_studio_customize_preview_js' );
+add_action( 'customize_preview_init', 'boira_base_customize_preview_js' );

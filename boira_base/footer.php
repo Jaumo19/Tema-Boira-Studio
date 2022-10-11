@@ -13,16 +13,16 @@
 
 	<footer id="colophon" class="site-footer">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'boira-studio' ) ); ?>">
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'boira_base' ) ); ?>">
 				<?php
 				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'boira-studio' ), 'WordPress' );
+				printf( esc_html__( 'Proudly powered by %s', 'boira_base' ), 'WordPress' );
 				?>
 			</a>
 			<span class="sep"> | </span>
 				<?php
 				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'boira-studio' ), 'boira-studio', '<a href="https://boira.studio">Boira Studio</a>' );
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'boira_base' ), 'boira_base', '<a href="http://underscores.me/">Boira.Studio</a>' );
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

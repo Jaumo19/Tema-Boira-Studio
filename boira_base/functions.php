@@ -19,14 +19,14 @@ if ( ! defined( '_S_VERSION' ) ) {
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function boira_studio_setup() {
+function boira_base_setup() {
 	/*
 		* Make theme available for translation.
 		* Translations can be filed in the /languages/ directory.
 		* If you're building a theme based on Boira Base, use a find and replace
-		* to change 'boira-studio' to the name of your theme in all the template files.
+		* to change 'boira_base' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'boira-studio', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'boira_base', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -49,7 +49,7 @@ function boira_studio_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'boira-studio' ),
+			'menu-1' => esc_html__( 'Primary', 'boira_base' ),
 		)
 	);
 
@@ -74,7 +74,7 @@ function boira_studio_setup() {
 	add_theme_support(
 		'custom-background',
 		apply_filters(
-			'boira_studio_custom_background_args',
+			'boira_base_custom_background_args',
 			array(
 				'default-color' => 'ffffff',
 				'default-image' => '',
@@ -100,7 +100,7 @@ function boira_studio_setup() {
 		)
 	);
 }
-add_action( 'after_setup_theme', 'boira_studio_setup' );
+add_action( 'after_setup_theme', 'boira_base_setup' );
 
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
@@ -109,22 +109,22 @@ add_action( 'after_setup_theme', 'boira_studio_setup' );
  *
  * @global int $content_width
  */
-function boira_studio_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'boira_studio_content_width', 640 );
+function boira_base_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'boira_base_content_width', 640 );
 }
-add_action( 'after_setup_theme', 'boira_studio_content_width', 0 );
+add_action( 'after_setup_theme', 'boira_base_content_width', 0 );
 
 /**
  * Register widget area.
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
-function boira_studio_widgets_init() {
+function boira_base_widgets_init() {
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'boira-studio' ),
+			'name'          => esc_html__( 'Sidebar', 'boira_base' ),
 			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'boira-studio' ),
+			'description'   => esc_html__( 'Add widgets here.', 'boira_base' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -132,22 +132,22 @@ function boira_studio_widgets_init() {
 		)
 	);
 }
-add_action( 'widgets_init', 'boira_studio_widgets_init' );
+add_action( 'widgets_init', 'boira_base_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function boira_studio_scripts() {
-	wp_enqueue_style( 'boira-studio-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_style_add_data( 'boira-studio-style', 'rtl', 'replace' );
+function boira_base_scripts() {
+	wp_enqueue_style( 'boira_base-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_style_add_data( 'boira_base-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'boira-studio-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'boira_base-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'boira_studio_scripts' );
+add_action( 'wp_enqueue_scripts', 'boira_base_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -176,13 +176,3 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-/*add_action('acf/init', 'my_register_blocks');
-function my_register_blocks() {
-
-    // check function exists.
-    if( function_exists('acf_register_block_type') ) {
-
-        // register a testimonial block.
-        
-	}
-}*/
