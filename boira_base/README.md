@@ -68,3 +68,7 @@ $ npm install
 Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
 
 Good luck!
+
+Manual:
+
+https://docs.google.com/document/d/16KXYZoFr8Nu_iGk81Ys4pbimbToeeelrbvXYUMeToxk/edit?usp=sharing
